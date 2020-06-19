@@ -1,7 +1,12 @@
 import pytest
 
-from pyrva_talk import twitter
 
 
 def test_twitter_auth():
-    auth = twitter.read_feed.auth
+    """ Ensure API credentials are valid """
+    from pyrva_talk.twitter.auth import get_auth
+    from tweepy.api import API
+
+    auth = get_auth()
+    api = API(auth)
+    assert api.verify_credentials()
