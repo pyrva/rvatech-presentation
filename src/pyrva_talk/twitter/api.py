@@ -35,7 +35,7 @@ def get_tweets(query=py_rva, start_date=None):
         payload['since'] = start_date
 
     # get tweets
-    tweet_cursor = tweepy.Cursor(twitter_api.search, **payload)
+    tweet_cursor = tweepy.Cursor(twitter_api.search, tweet_mode="extended", **payload)
     tweets = [tweet for tweet in chain.from_iterable(tweet_cursor.pages())]
     
     return tweets
