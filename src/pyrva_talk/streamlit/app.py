@@ -4,7 +4,7 @@ import streamlit as st
 from pyrva_talk.twitter import api
 
 handle = st.sidebar.text_input("Twitter Handle", value='ThePSF')
-hours = st.sidebar.slider("Days", min_value=1, max_value=48, value=12, step=1)
+hours = st.sidebar.slider("Hours", min_value=1, max_value=48, value=12, step=1)
 
 if handle and handle[0] != '@':
     handle = '@' + handle
