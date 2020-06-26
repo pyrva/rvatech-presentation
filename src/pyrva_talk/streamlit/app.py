@@ -1,6 +1,7 @@
 from typing import List, Union
 import datetime
 import streamlit as st
+import numpy as np
 import pandas as pd
 import altair as alt
 from tweepy.error import TweepError
@@ -122,7 +123,7 @@ def users(handles: List[str]) -> None:
 
         for col in data.select_dtypes(['int']).columns:
             st.header(fields[col])
-            users_compare(data, col)
+            users_compare(data.replace(0, np.nan), col)
 
 
 def mentions(handles: List[str], since: datetime.date) -> None:
