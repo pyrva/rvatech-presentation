@@ -87,11 +87,11 @@ def users(handles: List[str]) -> None:
         'screen_name': 'Screen Name',
         'name': 'Name',
         'followers_count': 'Followers',
-        'friends_count': 'Friends',
+        'friends_count': 'Following',
         'listed_count': 'Listed',
         'created_at': 'Created',
         'favourites_count': 'Favorites',
-        'statuses_count': 'Statuses',
+        'statuses_count': 'Tweets',
     }
 
     st.title('Compare Users')
