@@ -26,6 +26,17 @@ def select_scale(key: str) -> str:
     return scale
 
 
+def users_timeline(data: pd.DataFrame):
+    base = (
+        alt.Chart(data)
+        .mark_circle(size=50)
+        .encode(
+            x='created_at:T',
+            tooltip=['screen_name', 'created_at']
+        )
+    )
+    show_chart(base)
+
 def users_compare(data: pd.DataFrame, field: str):
 
     scale = alt.Scale(type=select_scale(field))
@@ -120,6 +131,9 @@ def users(handles: List[str]) -> None:
             st.sidebar.markdown(
                 f'---\n**{link}** {u.name}\n\n{u.description}'
             )
+
+        st.header("Joined Twitter")
+        users_timeline(data)
 
         for col in data.select_dtypes(['int']).columns:
             st.header(fields[col])
