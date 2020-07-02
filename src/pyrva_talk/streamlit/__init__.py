@@ -16,9 +16,6 @@ def show_chart(graph: alt.Chart):
     st.altair_chart(graph, use_container_width=True)
 
 
-def select_scale(key: str) -> str:
+def select_scale(key: str, prompt: str='Log Axis') -> str:
     """Display consistent checkbox for altering axis type."""
-    scale = 'linear'
-    if st.checkbox('Log Axis', key=key):
-        scale = 'log'
-    return scale
+    return 'log' if st.checkbox(prompt, key=key) else 'linear'
