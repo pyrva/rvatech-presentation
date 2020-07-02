@@ -12,10 +12,12 @@ def url_from_handle(screen_name: str, md_link: bool = False) -> str:
 
 
 def show_chart(graph: alt.Chart):
+    """Wrapper function to ensure container width."""
     st.altair_chart(graph, use_container_width=True)
 
 
 def select_scale(key: str) -> str:
+    """Display consistent checkbox for altering axis type."""
     scale = 'linear'
     if st.checkbox('Log Axis', key=key):
         scale = 'log'

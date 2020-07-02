@@ -30,7 +30,7 @@ def format_handles(handles: str) -> Union[str, List[str]]:
 
 
 def main() -> None:
-
+    """Main App Controller."""
     mode = st.sidebar.selectbox("Mode", options=[USER_DETAIL, USERS, MENTIONS])
 
     handle: str = ''

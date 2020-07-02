@@ -6,7 +6,7 @@ from pyrva_talk.twitter import api
 
 
 def display(handle: str) -> None:
-
+    """Render User Detail App."""
     if not handle:
         st.write("Enter Twitter handle for details.")
     else:

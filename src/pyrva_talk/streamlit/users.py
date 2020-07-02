@@ -10,6 +10,7 @@ from pyrva_talk.streamlit import url_from_handle, show_chart, select_scale
 
 
 def users_timeline(data: pd.DataFrame):
+    """Display timeline with a dot for when each user joined Twitter."""
     base = (
         alt.Chart(data)
         .mark_circle(size=50)
@@ -22,7 +23,7 @@ def users_timeline(data: pd.DataFrame):
 
 
 def users_compare(data: pd.DataFrame, field: str):
-
+    """Bar chart template for comparing all users across a field."""
     scale = alt.Scale(type=select_scale(field))
     base = alt.Chart(data).mark_bar().encode(
         x=alt.X(f'{field}:Q', title='', scale=scale),
@@ -32,7 +33,7 @@ def users_compare(data: pd.DataFrame, field: str):
 
 
 def display(handles: List[str]) -> None:
-
+    """Render Users App."""
     fields = {
         'screen_name': 'Screen Name',
         'name': 'Name',
