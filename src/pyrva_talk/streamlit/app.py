@@ -4,11 +4,13 @@ import streamlit as st
 
 from pyrva_talk import settings
 import pyrva_talk.streamlit.user_detail as user_detail
+import pyrva_talk.streamlit.tweet_detail as tweet_detail
 import pyrva_talk.streamlit.users as users
 import pyrva_talk.streamlit.mentions as mentions
 
 
 USER_DETAIL: str = 'User Detail'
+TWEET_DETAIL: str = 'Tweet Detail'
 USERS: str = 'Compare Users'
 MENTIONS: str = 'Mentions'
 
@@ -31,10 +33,10 @@ def format_handles(handles: str) -> Union[str, List[str]]:
 
 def main() -> None:
     """Main App Controller."""
-    mode = st.sidebar.selectbox("Mode", options=[USER_DETAIL, USERS, MENTIONS])
+    mode = st.sidebar.selectbox("Mode", options=[USER_DETAIL, TWEET_DETAIL, USERS, MENTIONS])
 
     handle: str = ''
-    if mode in [USER_DETAIL]:
+    if mode in [USER_DETAIL, TWEET_DETAIL]:
         handle = format_handles(
             st.sidebar.text_input('Twitter Handle')
         )
@@ -58,6 +60,8 @@ def main() -> None:
 
     if mode == USER_DETAIL:
         user_detail.display(handle)
+    elif mode == TWEET_DETAIL:
+        tweet_detail.display(handle)
     elif mode == USERS:
         users.display(handles)
     elif mode == MENTIONS:
