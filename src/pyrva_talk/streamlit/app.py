@@ -38,7 +38,7 @@ def main() -> None:
     handle: str = ''
     if mode in [USER_DETAIL, TWEET_DETAIL]:
         handle = format_handles(
-            st.sidebar.text_input('Twitter Handle')
+            st.sidebar.text_input('Twitter Handle', value='PyRVA')
         )
 
     handles: List[str] = []
@@ -47,14 +47,15 @@ def main() -> None:
             st.sidebar.text_area("Twitter Handles", value='rvatech\nPyRVA')
         )
 
-    since: datetime.date = datetime.datetime.now()
+    since: datetime.date = (
+        datetime.datetime.now()
+        - datetime.timedelta(days=settings.DATE_SELECT_MAX_HISTORY)
+    )
     if mode in [MENTIONS]:
         since = st.sidebar.date_input(
             label="Start Date",
-            min_value=(
-                    datetime.datetime.now()
-                    - datetime.timedelta(days=settings.DATE_SELECT_MAX_HISTORY)
-            ),
+            value=since,
+            min_value=since,
             max_value=datetime.datetime.now()
         )
 
@@ -70,3 +71,4 @@ def main() -> None:
 
 if __name__ == '__main__':
     main()
+

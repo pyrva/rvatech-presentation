@@ -16,6 +16,7 @@ def display(handle: str) -> None:
             st.write("That is not a valid handle")
             return
 
+
         link = url_from_handle(user.screen_name, md_link=True)
         most_recent = user.timeline()[0]
         start_date = getattr(most_recent, 'created_at').strftime('%Y-%m-%d')
