@@ -91,14 +91,150 @@ class: title
 # Placeholder
 
 ---
-
 class: title
 
-# Use Streamlit to produce charts and graphics
+![streamlit logo](streamlit-logo.png)
+# [Streamlit](https://www.streamlit.io/)
+
+Open-source app framework for creating beautiful, performant apps in pure Python.
+
+On June 16, 2020, Streamlit announced a [$21M Series A Investment](https://medium.com/streamlit/announcing-streamlits-21m-series-a-ae05daa6c885)
 
 ---
 
-# Placeholder
+# Streamlit in a Nutshell
+
+Streamlit will run your app from top to bottom like a python script
+
+Work with any Python libraries you'd like
+
+Easily add interactive widgets using only Python
+
+Use `@st.cache` decorator to cache expensive functions
+
+Easily deploy to [Streamlit for Teams](https://www.streamlit.io/for-teams) (beta) or other providers like [Heroku](https://pyrva-rvatech.herokuapp.com/)
+
+---
+
+# Graph PyRVA Attendance History - Code
+
+```python
+import altair, pandas, requests, streamlit
+
+url = 'https://api.meetup.com/PyRVAUserGroup/events'
+response = requests.get(url, params={'status': 'past'})
+df = pandas.DataFrame(response.json())
+
+streamlit.write(df)
+streamlit.altair_chart(
+    altair.Chart(df).mark_line().encode(
+        x=altair.X('local_date:T', title='Date'),
+        y=altair.Y('yes_rsvp_count:Q', title='RSVPs'),
+    ),
+    use_container_width=True
+)
+```
+
+---
+
+# Graph PyRVA Attendance History - Results
+
+`streamlit run src/pyrva_talk/streamlit/pyrva-attendance.py`
+
+![pyrva attendance](pyrva-attendance.png)
+
+---
+
+# Streamlit Works Well With The Following and More!
+
+.left-column[
+
+**Data Analysis / Machine Learning**
+
+* Numpy
+* Pandas
+* Keras
+* TensorFlow
+* Scikit Learn
+* OpenCV
+]
+.right-column[
+
+**Visualization**
+
+* Altair
+* Bokeh
+* matplotlib
+* Seaborn
+* Deck.GL
+* Plotly
+]
+
+---
+
+# Interactive Widgets!
+
+.left-column[
+![widgets](widgets1.png)
+]
+.right-column[
+![widgets](widgets2.png)
+]
+
+---
+
+# Streamlit Caching
+
+.left-column[
+```python
+def bar(y):
+  time.sleep(1)
+  return y
+
+@st.cache
+def foo(x):
+  time.sleep(1)
+  return bar(x)
+
+foo(1)
+```
+]
+.right-column[
+
+Streamlit will check 
+
+* The input parameters that you called the function with
+* The value of any external variable used in the function
+* The body of the function
+* The body of any function used inside the cached function 
+]
+
+---
+
+# Deploy
+```
+web: sh setup.sh && streamlit run path/to/app.py
+```
+
+.left-column[
+
+To deploy to Heroku, you need three files:
+
+* Your application 
+  * May be multiple files
+* `Procfile` (above)
+* `setup.sh` (right)
+
+]
+.right-column[
+```
+mkdir -p ~/.streamlit/
+
+echo "[general]\nemail = author@example.com" > ~/.streamlit/credentials.toml
+
+echo "[server]\nheadless = true\nenableCORS=false\nport = $PORT\n" > ~/.streamlit/config.toml
+```
+]
 
 ---
 
