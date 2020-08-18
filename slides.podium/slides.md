@@ -248,7 +248,7 @@ Easily deploy to [Streamlit for Teams](https://www.streamlit.io/for-teams) (beta
 
 # Graph PyRVA Attendance History - Code
 
-```python
+``` python
 import altair, pandas, requests, streamlit
 
 url = 'https://api.meetup.com/PyRVAUserGroup/events'
@@ -316,7 +316,7 @@ streamlit.altair_chart(
 # Streamlit Caching
 
 .left-column[
-```python
+``` python
 def bar(y):
   time.sleep(1)
   return y
