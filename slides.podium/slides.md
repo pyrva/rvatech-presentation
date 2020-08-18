@@ -74,21 +74,151 @@ It is this attribute of python that we'd like to show you today.
 
 class: title
 
-# Get data from Twitter
+# Save Twitter data (by hand)
 
----
+Say we wanted to use python to visualize how many tweets a day are using a certain hashtag.
 
-# Placeholder
+We can visit twitter and copy all the tweets we find, along with the day they were tweeted and save to a file that looks like this:
+
+`2020-05-09,Wow #PyRVA is super cool!`
+`2020-05-09,Wow #PyRVA is super duper cool!`
+`2020-05-10,Wow #PyRVA is super awesome!`
+
+This type of file is known as a csv (or comma-separated values) file, and python comes with a library for working with them- `csv`
 
 ---
 
 class: title
 
-# Produce a simple bar chart
+# Read Twitter data from a file
+
+Now that we have some data, let's pull it into python using `csv`:
+
+``` python
+import csv
+from pathlib import Path
+
+def get_data():
+    """ get the data from csv """
+    # Find tweets in file next to this one
+    base_path = Path(__file__)
+    data_path = base_path.parent / "tweets.csv"
+    # Open file & read content
+    with data_path.open() as f:
+        reader = csv.DictReader(f, ["date", "tweet"])
+        lines = [line for line in reader]
+    return lines
+```
 
 ---
 
-# Placeholder
+class: title
+
+# Use Python to analyze Tweets
+
+Now that we're able to read in our csv, let's count how many tweets we're getting per day:
+
+``` python
+
+def process_data(data):
+    """ bin data into day & tweet count """
+    # Get a list of each day we got at least one tweet on
+    labels = list(set(row["date"] for row in data))
+    # Sort labels so they appear in order
+    labels.sort()
+    # Count how many tweets we got on each particular day
+    values = []
+    for label in labels:
+        count = sum(1 for row in data if row["date"] == label)
+        values.append(count)
+    return labels, values
+
+```
+
+---
+
+class: title
+
+# Graph our Tweet Data
+
+We can use a python library called `matplotlib` to create a simple bar chart:
+
+``` python
+import matplotlib.pyplot as plt
+
+def draw_barchart(labels, values):
+    """ draw a bar chart """
+    plt.bar(labels, values, color="blue")
+    plt.xlabel("Date")
+    plt.ylabel("Tweets")
+    plt.title("Tweets using #PyRVA")
+    plt.show()
+```
+
+---
+
+class: title
+
+# Fetching Twitter data automatically
+
+Fetching a tweets for a small hashtag over a short period of time is pretty straightforward, but doesn't scale well.
+
+Let's automate the process by getting our data directly from Twitter's API.
+
+To do so, we'll be using a python library that wraps around Twitter's API- [`tweepy`](https://pypi.org/project/tweepy/)
+
+---
+
+class: title
+
+# Authenticating with Twitter's API
+
+Twitter doesn't give it's data out to just anyone- you have to set up an account with them, and then prove that requests are coming from you.
+
+`tweepy` makes this easy- we can pass in the credentials for our twitter account:
+
+``` python
+import tweepy
+from pyrva_talk import settings
+
+def get_auth():
+    """ Authenticates with Twitter based on settings in ``settings`` """
+    auth = tweepy.OAuthHandler(
+        settings.TWITTER_API_KEY,
+        settings.TWITTER_API_SECRET_KEY,
+        settings.TWITTER_API_CALLBACK_URL,
+    )
+    auth.set_access_token(settings.TWITTER_API_ACCESS_KEY, settings.TWITTER_API_ACCESS_SECRET)
+    return auth
+```
+---
+
+class: title
+
+# Getting to the Tweets
+
+Now that Twitter's API trusts us, we can ask it for data by using the `search` method:
+
+``` python
+import tweepy
+from itertools import chain
+from pyrva_talk.twitter.auth import get_auth
+
+auth = get_auth()
+twitter_api = tweepy.API(auth)
+
+def get_tweets(query=py_rva, start_date=None):
+    """ Return tweets for ``query`` (since datetime ``since``)"""
+    payload = {
+        'q': query
+    }
+    if start_date:
+        payload['since'] = start_date
+    # get tweets
+    tweet_cursor = tweepy.Cursor(twitter_api.search, tweet_mode="extended", **payload)
+    tweets = [tweet for tweet in chain.from_iterable(tweet_cursor.pages())]
+    return tweets
+```
 
 ---
 class: title
