@@ -7,20 +7,11 @@ class: title
 
 ---
 
-class: logo
-
-# Authors:
-
-| | |
-|---|---|
-| ![ProfilePic](mike-alfare.jpg) | Mike Alfare |
-| ![ProfilePic](brian-cohan.jpg) | Brian Cohan |
-| ![ProfilePic](stephen-lowery.png) | Stephen Lowery |
-| ![ProfilePic](chris-may.jpg) | Chris May |
-
----
-
 class: title
+
+# Some bullet points
+
+???
 
 ## Python is a unique language. It is powerful enough to used in places like NASA, Wall Street, and the Large Hadron Collider to do things like render the first image of a black hole and discover new particles.
 
@@ -72,7 +63,19 @@ It is this attribute of python that we'd like to show you today.
 
 ---
 
-class: title
+class: logo
+
+# Presenters:
+
+| | |
+|---|---|
+| ![ProfilePic](stephen-lowery.png) | Stephen Lowery |
+| ![ProfilePic](brian-cohan.jpg) | Brian Cohan |
+| ![ProfilePic](mike-alfare.jpg) | Mike Alfare |
+
+---
+
+class: class
 
 # Save Twitter data (by hand)
 
@@ -80,11 +83,13 @@ Say we wanted to use python to visualize how many tweets a day are using a certa
 
 We can visit twitter and copy all the tweets we find, along with the day they were tweeted and save to a file that looks like this:
 
-`2020-05-09,Wow #PyRVA is super cool!`
-`2020-05-09,Wow #PyRVA is super duper cool!`
-`2020-05-10,Wow #PyRVA is super awesome!`
+```
+2020-05-09,Wow #PyRVA is super cool!
+2020-05-09,Wow #PyRVA is super duper cool!
+2020-05-10,Wow #PyRVA is super awesome!
+```
 
-This type of file is known as a csv (or comma-separated values) file, and python comes with a library for working with them- `csv`
+This type of file is known as a csv (or comma-separated values) file, and python comes with a library for working with them: `csv`
 
 ---
 
@@ -119,7 +124,6 @@ class: title
 Now that we're able to read in our csv, let's count how many tweets we're getting per day:
 
 ``` python
-
 def process_data(data):
     labels = list(set(row["date"] for row in data))
     labels.sort()
@@ -149,6 +153,14 @@ def draw_barchart(labels, values):
     plt.title("Tweets using #PyRVA")
     plt.show()
 ```
+
+---
+
+class: Title
+
+# Replace this!
+
+![image](https://chartio.com/assets/9bfb20/tutorials/charts/stacked-bar-charts/073137bf11f1c2226f68c3188128e28d66115622dcdecc9bc208a6d4117f53e8/stacked-bar-example-1.png)
 
 ---
 
