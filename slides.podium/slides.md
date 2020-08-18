@@ -121,12 +121,8 @@ Now that we're able to read in our csv, let's count how many tweets we're gettin
 ``` python
 
 def process_data(data):
-    """ bin data into day & tweet count """
-    # Get a list of each day we got at least one tweet on
     labels = list(set(row["date"] for row in data))
-    # Sort labels so they appear in order
     labels.sort()
-    # Count how many tweets we got on each particular day
     values = []
     for label in labels:
         count = sum(1 for row in data if row["date"] == label)
@@ -147,7 +143,6 @@ We can use a python library called `matplotlib` to create a simple bar chart:
 import matplotlib.pyplot as plt
 
 def draw_barchart(labels, values):
-    """ draw a bar chart """
     plt.bar(labels, values, color="blue")
     plt.xlabel("Date")
     plt.ylabel("Tweets")
@@ -173,22 +168,19 @@ class: title
 
 # Authenticating with Twitter's API
 
-Twitter doesn't give it's data out to just anyone- you have to set up an account with them, and then prove that requests are coming from you.
-
-`tweepy` makes this easy- we can pass in the credentials for our twitter account:
+Twitter doesn't give it's data out- you have to set up an account with them and prove requests are from you. `tweepy` makes this easy:
 
 ``` python
-import tweepy
-from pyrva_talk import settings
-
 def get_auth():
-    """ Authenticates with Twitter based on settings in ``settings`` """
     auth = tweepy.OAuthHandler(
-        settings.TWITTER_API_KEY,
-        settings.TWITTER_API_SECRET_KEY,
-        settings.TWITTER_API_CALLBACK_URL,
+        TWITTER_API_KEY,
+        TWITTER_API_SECRET_KEY,
+        TWITTER_API_CALLBACK_URL,
     )
-    auth.set_access_token(settings.TWITTER_API_ACCESS_KEY, settings.TWITTER_API_ACCESS_SECRET)
+    auth.set_access_token(
+        TWITTER_API_ACCESS_KEY, 
+        TWITTER_API_ACCESS_SECRET
+    )
     return auth
 ```
 ---
@@ -200,23 +192,17 @@ class: title
 Now that Twitter's API trusts us, we can ask it for data by using the `search` method:
 
 ``` python
-import tweepy
-from itertools import chain
-from pyrva_talk.twitter.auth import get_auth
-
-auth = get_auth()
-twitter_api = tweepy.API(auth)
-
 def get_tweets(query=py_rva, start_date=None):
-    """ Return tweets for ``query`` (since datetime ``since``)"""
-    payload = {
-        'q': query
-    }
+    payload = {'q': query}
     if start_date:
         payload['since'] = start_date
-    # get tweets
-    tweet_cursor = tweepy.Cursor(twitter_api.search, tweet_mode="extended", **payload)
-    tweets = [tweet for tweet in chain.from_iterable(tweet_cursor.pages())]
+    tweet_cursor = tweepy.Cursor(
+        twitter_api.search, tweet_mode="extended", **payload
+    )
+    tweets = [
+        tweet for tweet in 
+        chain.from_iterable(tweet_cursor.pages())
+    ]
     return tweets
 ```
 
