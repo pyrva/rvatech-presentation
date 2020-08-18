@@ -356,16 +356,81 @@ echo "[server]\nheadless = true\nenableCORS=false\nport = $PORT\n" > ~/.streamli
 
 class: title
 
-# Use Podium to produce these slides
+![BeeWare](https://beeware.org/project/projects/applications/podium/podium.png)
+# [Podium](https://beeware.org/project/projects/applications/podium/)
+
+### A markup-based slide presentation tool
+### part of the BeeWare project
+
+---
+class: title
+.left-column[
+![BeeWare](https://beeware.org/static/images/brutus-270.png)
+# [BeeWare](https://beeware.org/project/overview/)
+]
+.right-column[
+
+* Enable Python to run on different devices
+* Package a Python project so it can run on those devices
+* Access the native widgets and capabilities of devices
+* Help develop, debug, analyze, and deploy these projects
+]
+---
+
+## Create a slide using augmented markdown:
+
+``` markdown
+---
+class: title
+.left-column[
+![BeeWare](https://beeware.org/static/images/brutus-270.png)
+# [BeeWare](https://beeware.org/project/overview/)
+]
+.right-column[
+
+* Enable Python to run on different devices
+* Package a Python project so it can run on those devices
+* Access the native widgets and capabilities of devices
+* Help develop, debug, analyze, and deploy these projects
+]
+---
+```
 
 ---
 
-# Placeholder
+## Install Podium on Ubuntu:
+
+1. Download the binary from the GitHub Releases page:
+    https://github.com/beeware/podium/releases
+1. Mark the AppImage file as executable:
+    ```
+    chmod +x Podium-*.AppImage
+    ```
+1. Place your markdown file inside of directory with a .podium extension:
+    ```
+    repo/slides.podium/slides.md
+    ```
+1. Execute Podium and select the .podium directory created above
+
+---
+
+## What made this possible?
+
+.left-column[
+![Toga](https://beeware.org/project/projects/libraries/toga/toga.png)
+## Toga
+### A Python native, OS native GUI toolkit
+]
+.right-column[
+![Briefcase](https://beeware.org/project/projects/tools/briefcase/briefcase.png)
+## Briefcase
+### Convert a Python project into a standalone native application
+]
 
 ---
 
 # Resources:
 
 * PyRVA: https://www.pyrva.org/
-* GitHub: https://www.github.com/pyrva/rvatech-2020-07-21/
+* GitHub: https://www.github.com/pyrva/
 * Streamlit app: https://pyrva-rvatech.herokuapp.com/
