@@ -22,9 +22,9 @@ class: logo
 | | |
 |---|---|
 | ![ProfilePic](chris-may.jpg) | Chris May |
+| ![ProfilePic](mike-alfare.jpg) | Mike Alfare |
 | ![ProfilePic](stephen-lowery.png) | Stephen Lowery |
 | ![ProfilePic](brian-cohan.jpg) | Brian Cohan |
-| ![ProfilePic](mike-alfare.jpg) | Mike Alfare |
 
 ---
 
@@ -73,6 +73,9 @@ It is this attribute of python that we'd like to show you today.
 # We're going to show you how to accomplish several different tasks, all from within python
 
 --
+* Use Podium to produce these slides
+
+--
 * Get data from Twitter
 
 --
@@ -81,8 +84,84 @@ It is this attribute of python that we'd like to show you today.
 --
 * Use Streamlit to produce charts and graphics
 
---
-* Use Podium to produce these slides
+---
+
+class: title
+
+![BeeWare](https://beeware.org/project/projects/applications/podium/podium.png)
+# [Podium](https://beeware.org/project/projects/applications/podium/)
+
+### A markup-based slide presentation tool
+### part of the BeeWare project
+
+---
+class: title
+.left-column[
+![BeeWare](https://beeware.org/static/images/brutus-270.png)
+# [BeeWare](https://beeware.org/project/overview/)
+]
+.right-column[
+
+* Enable Python to run on different devices
+* Package a Python project so it can run on those devices
+* Access the native widgets and capabilities of devices
+* Help develop, debug, analyze, and deploy these projects
+]
+---
+
+## Create a slide using augmented markdown:
+
+``` markdown
+---
+class: title
+.left-column[
+![BeeWare](https://beeware.org/static/images/brutus-270.png)
+# [BeeWare](https://beeware.org/project/overview/)
+]
+.right-column[
+
+* Enable Python to run on different devices
+* Package a Python project so it can run on those devices
+* Access the native widgets and capabilities of devices
+* Help develop, debug, analyze, and deploy these projects
+]
+---
+```
+
+---
+
+## Install Podium:
+
+1. Download the binary from the GitHub Releases page:
+    https://github.com/beeware/podium/releases
+1. On Linux, mark the AppImage file as executable:
+    ```
+    chmod +x Podium-*.AppImage
+    ```
+1. Place your markdown file inside of directory with a .podium extension:
+    ```
+    repo/slides.podium/slides.md
+    ```
+1. Execute Podium and select the .podium directory created above
+
+---
+
+## What made this possible?
+
+.left-column[
+![Briefcase](https://beeware.org/project/projects/tools/briefcase/briefcase.png)
+## Briefcase
+### Convert a Python project into a standalone native application
+]
+.right-column[
+![Toga](https://beeware.org/project/projects/libraries/toga/toga.png)
+## Toga
+### A Python native, OS native GUI toolkit
+]
+
+---
+
+Talk about the UI here
 
 ---
 
@@ -371,81 +450,6 @@ echo "[general]\nemail = author@example.com" > ~/.streamlit/credentials.toml
 
 echo "[server]\nheadless = true\nenableCORS=false\nport = $PORT\n" > ~/.streamlit/config.toml
 ```
-]
-
----
-
-class: title
-
-![BeeWare](https://beeware.org/project/projects/applications/podium/podium.png)
-# [Podium](https://beeware.org/project/projects/applications/podium/)
-
-### A markup-based slide presentation tool
-### part of the BeeWare project
-
----
-class: title
-.left-column[
-![BeeWare](https://beeware.org/static/images/brutus-270.png)
-# [BeeWare](https://beeware.org/project/overview/)
-]
-.right-column[
-
-* Enable Python to run on different devices
-* Package a Python project so it can run on those devices
-* Access the native widgets and capabilities of devices
-* Help develop, debug, analyze, and deploy these projects
-]
----
-
-## Create a slide using augmented markdown:
-
-``` markdown
----
-class: title
-.left-column[
-![BeeWare](https://beeware.org/static/images/brutus-270.png)
-# [BeeWare](https://beeware.org/project/overview/)
-]
-.right-column[
-
-* Enable Python to run on different devices
-* Package a Python project so it can run on those devices
-* Access the native widgets and capabilities of devices
-* Help develop, debug, analyze, and deploy these projects
-]
----
-```
-
----
-
-## Install Podium:
-
-1. Download the binary from the GitHub Releases page:
-    https://github.com/beeware/podium/releases
-1. On Linux, mark the AppImage file as executable:
-    ```
-    chmod +x Podium-*.AppImage
-    ```
-1. Place your markdown file inside of directory with a .podium extension:
-    ```
-    repo/slides.podium/slides.md
-    ```
-1. Execute Podium and select the .podium directory created above
-
----
-
-## What made this possible?
-
-.left-column[
-![Toga](https://beeware.org/project/projects/libraries/toga/toga.png)
-## Toga
-### A Python native, OS native GUI toolkit
-]
-.right-column[
-![Briefcase](https://beeware.org/project/projects/tools/briefcase/briefcase.png)
-## Briefcase
-### Convert a Python project into a standalone native application
 ]
 
 ---
