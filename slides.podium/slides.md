@@ -156,11 +156,11 @@ def draw_barchart(labels, values):
 
 ---
 
-class: Title
+class: screenshot
 
-# Replace this!
+# ...and here is our chart
 
-![image](https://chartio.com/assets/9bfb20/tutorials/charts/stacked-bar-charts/073137bf11f1c2226f68c3188128e28d66115622dcdecc9bc208a6d4117f53e8/stacked-bar-example-1.png)
+![image](tweets-over-time.png)
 
 ---
 
@@ -170,9 +170,9 @@ class: title
 
 Fetching a tweets for a small hashtag over a short period of time is pretty straightforward, but doesn't scale well.
 
-Let's automate the process by getting our data directly from Twitter's API.
+Let's automate the process by getting data directly from Twitter's API.
 
-To do so, we'll be using a python library that wraps around Twitter's API- [`tweepy`](https://pypi.org/project/tweepy/)
+To do so, we'll use a python library that wraps Twitter's API: [`tweepy`](https://pypi.org/project/tweepy/)
 
 ---
 
@@ -211,10 +211,7 @@ def get_tweets(query=py_rva, start_date=None):
     tweet_cursor = tweepy.Cursor(
         twitter_api.search, tweet_mode="extended", **payload
     )
-    tweets = [
-        tweet for tweet in 
-        chain.from_iterable(tweet_cursor.pages())
-    ]
+    tweets = list(chain.from_iterable(tweet_cursor.pages()))
     return tweets
 ```
 
@@ -224,7 +221,7 @@ class: title
 ![streamlit logo](streamlit-logo.png)
 # [Streamlit](https://www.streamlit.io/)
 
-Open-source app framework for creating beautiful, performant apps in pure Python.
+Open-source app framework for creating beautiful, performant apps in pure Python
 
 On June 16, 2020, Streamlit announced a [$21M Series A Investment](https://medium.com/streamlit/announcing-streamlits-21m-series-a-ae05daa6c885)
 
@@ -240,7 +237,7 @@ Easily add interactive widgets using only Python
 
 Use `@st.cache` decorator to cache expensive functions
 
-Easily deploy to [Streamlit for Teams](https://www.streamlit.io/for-teams) (beta) or other providers like [Heroku](https://pyrva-rvatech.herokuapp.com/)
+Easily deploy to [Streamlit for Teams](https://www.streamlit.io/for-teams) (beta) or providers like [Heroku](https://pyrva-rvatech.herokuapp.com/)
 
 ---
 
@@ -277,7 +274,7 @@ streamlit.altair_chart(
 
 .left-column[
 
-**Data Analysis / Machine Learning**
+**Data Analysis / ML**
 
 * Numpy
 * Pandas
@@ -314,6 +311,7 @@ streamlit.altair_chart(
 # Streamlit Caching
 
 .left-column[
+<br><br><br>
 ``` python
 def bar(y):
   time.sleep(1)
@@ -329,7 +327,7 @@ foo(1)
 ]
 .right-column[
 
-Streamlit will check 
+Streamlit will check:
 
 * The input parameters that you called the function with
 * The value of any external variable used in the function
@@ -410,11 +408,11 @@ class: title
 
 ---
 
-## Install Podium on Ubuntu:
+## Install Podium:
 
 1. Download the binary from the GitHub Releases page:
     https://github.com/beeware/podium/releases
-1. Mark the AppImage file as executable:
+1. On Linux, mark the AppImage file as executable:
     ```
     chmod +x Podium-*.AppImage
     ```
