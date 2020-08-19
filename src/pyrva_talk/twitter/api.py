@@ -1,5 +1,6 @@
 """ Access to the twitter API """
 import datetime as dt
+import streamlit as st
 from itertools import chain
 
 import tweepy
@@ -25,6 +26,7 @@ def get_recent_mentions(user=py_rva, n=5):
     return tweets
 
 
+@st.cache
 def get_tweets(query=py_rva, start_date=None):
     """ Return tweets for ``query`` (since datetime ``since``)"""
 
