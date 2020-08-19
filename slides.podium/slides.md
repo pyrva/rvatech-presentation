@@ -165,18 +165,25 @@ Talk about the UI here
 
 ---
 
+# Building a bar chart with...
+
+![matplotlib](matplotlib_logo.svg)
+### Visualization with Python
+
+---
+
 class: class
 
 # Save Twitter data (by hand)
 
-Say we wanted to use python to visualize how many tweets a day are using a certain hashtag.
+Say we wanted to use python to visualize how many tweets a day are using the #PyCon hashtag.
 
 We can visit twitter and copy all the tweets we find, along with the day they were tweeted and save to a file that looks like this:
 
 ```
-2020-05-09,Wow #PyRVA is super cool!
-2020-05-09,Wow #PyRVA is super duper cool!
-2020-05-10,Wow #PyRVA is super awesome!
+2020-05-09,Wow #PyCon is super cool!
+2020-05-09,Wow #PyCon is super duper cool!
+2020-05-10,Wow #PyCon is super awesome!
 ```
 
 This type of file is known as a csv (or comma-separated values) file, and python comes with a library for working with them: `csv`
@@ -240,7 +247,7 @@ def draw_barchart(labels, values):
     plt.bar(labels, values, color="blue")
     plt.xlabel("Date")
     plt.ylabel("Tweets")
-    plt.title("Tweets using #PyRVA")
+    plt.title("Tweets using #PyCon")
     plt.show()
 ```
 
@@ -248,7 +255,7 @@ def draw_barchart(labels, values):
 
 class: screenshot
 
-# ...and here is our chart
+# ...and here is our chart!
 
 ![image](tweets-over-time.png)
 
@@ -256,13 +263,13 @@ class: screenshot
 
 class: title
 
-# Fetching Twitter data automatically
+# Scaling up- getting data automatically
 
 Fetching a tweets for a small hashtag over a short period of time is pretty straightforward, but doesn't scale well.
 
-Let's automate the process by getting data directly from Twitter's API.
+Let's automate our data collection with another python library:
 
-To do so, we'll use a python library that wraps Twitter's API: [`tweepy`](https://pypi.org/project/tweepy/)
+![tweepy](tweepy_logo.png)
 
 ---
 
@@ -304,6 +311,31 @@ def get_tweets(query, start_date=None):
     tweets = list(chain.from_iterable(tweet_cursor.pages()))
     return tweets
 ```
+
+---
+
+# Putting it all together
+
+Now that we just need to update our chart's data function:
+
+``` python
+def get_data():
+    """ Get Tweet data from Twitter """
+    tweets = get_tweets('#PyCon', start_date='2020-07-01')
+    rows = [
+        {'date': tweet.created_at, 'tweet':tweet.full_text} 
+        for tweet in tweets
+    ]
+    return rows
+```
+
+---
+
+class: screenshot
+
+# ...and here's the chart (automatically generated!)
+
+![tweet_chart](auto-tweets-over-time.png)
 
 ---
 class: title
