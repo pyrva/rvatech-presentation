@@ -1,17 +1,24 @@
 class: title
 
-# Python the Swiss Army Knife:
-## Sourcing, Analyzing, and Reporting Twitter Data Using Python
+# Python 201:
+# Taking it to the next level
 
 ![PyRVA](pyrva-logo.png)
 
 ---
 
-class: title
 
 # Who is PyRVA?
 
-Some things about PyRVA
+* Richmond's largest Python user group
+
+--
+
+* Nearly 1,500 members
+
+--
+
+* Almost 5 years old
 
 ---
 
