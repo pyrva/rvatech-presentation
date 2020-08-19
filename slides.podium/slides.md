@@ -109,7 +109,7 @@ class: title
 ]
 ---
 
-## Create a slide using augmented markdown:
+## Create a Slide Using Augmented Markdown
 
 ``` markdown
 ---
@@ -130,7 +130,7 @@ class: title
 
 ---
 
-## Install Podium:
+## Install Podium
 
 1. Download the binary from the GitHub Releases page:
     https://github.com/beeware/podium/releases
@@ -146,22 +146,79 @@ class: title
 
 ---
 
-## What made this possible?
+## Explore the UI
 
-.left-column[
-![Briefcase](https://beeware.org/project/projects/tools/briefcase/briefcase.png)
-## Briefcase
-### Convert a Python project into a standalone native application
-]
-.right-column[
-![Toga](https://beeware.org/project/projects/libraries/toga/toga.png)
-## Toga
-### A Python native, OS native GUI toolkit
-]
+You get a few options in the menu bar, all with hotkeys
+
+* Open a new deck
+* Reload the current deck
+* Present the current deck in fullscreen 
 
 ---
 
-Talk about the UI here
+## Explore the UI
+
+You also get additional functions on a second screen for the presenter
+
+* Current and next slides
+* Presenter notes
+* Timer
+
+---
+
+## What made this possible?
+
+--
+```python
+class Podium (toga.DocumentApp):
+    ...
+    def startup (self):
+        ...
+        self.commands.add(
+            toga.Command(
+                self.reload,
+                label='Reload slide deck',
+                shortcut=toga.Key.MOD_1 + 'r',
+                group=toga.Group.FILE,
+                section=1
+            )
+        )
+```
+
+---
+
+## What made this possible?
+
+```python
+class PrimarySlideWindow (toga.MainWindow):
+    ...
+    def create (self):
+        self.html_view = toga.WebView(
+            style=toga.style.Pack(
+                flex=1,
+                width=984 if self.deck.aspect == '16:9' else 738,
+                height=576
+            ),
+            on_key_down=self.deck.on_key_press
+        )
+        self.content = self.html_view
+    ...
+```
+
+---
+
+## Podium is a Great Example of Modular Python Design
+
+.left-column[
+![Briefcase](https://beeware.org/project/projects/tools/briefcase/briefcase.png)
+## [Briefcase](https://beeware.org/project/projects/tools/briefcase/)
+### Convert a Python project into a stand alone native application
+]
+.right-column[
+![Toga](https://beeware.org/project/projects/libraries/toga/toga.png)
+## [Toga](https://beeware.org/project/projects/libraries/toga/)
+### A Python native, OS native GUI toolkit
+]
 
 ---
 
@@ -491,3 +548,8 @@ echo "[server]\nheadless = true\nenableCORS=false\nport = $PORT\n" > ~/.streamli
 * PyRVA: https://www.pyrva.org/
 * GitHub: https://www.github.com/pyrva/
 * Streamlit app: https://pyrva-rvatech.herokuapp.com/
+* Noteable python packages:
+    * streamlit, altair
+    * tweepy, requests
+    * pandas, matplotlib
+    * toga
