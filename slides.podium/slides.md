@@ -215,7 +215,7 @@ class: title
 Now that Twitter's API trusts us, we can ask it for data by using the `search` method:
 
 ``` python
-def get_tweets(query=py_rva, start_date=None):
+def get_tweets(query, start_date=None):
     payload = {'q': query}
     if start_date:
         payload['since'] = start_date
