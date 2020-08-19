@@ -9,7 +9,30 @@ class: title
 
 class: title
 
-# Some bullet points
+# Who is PyRVA?
+
+Some things about PyRVA
+
+---
+
+class: logo
+
+# Presenters:
+
+| | |
+|---|---|
+| ![ProfilePic](chris-may.jpg) | Chris May |
+| ![ProfilePic](stephen-lowery.png) | Stephen Lowery |
+| ![ProfilePic](brian-cohan.jpg) | Brian Cohan |
+| ![ProfilePic](mike-alfare.jpg) | Mike Alfare |
+
+---
+
+# Python is a unique language
+
+* Python is a powerful language
+* Python has simple syntax
+* This combination contributes to python's popularity
 
 ???
 
@@ -60,18 +83,6 @@ It is this attribute of python that we'd like to show you today.
 
 --
 * Use Podium to produce these slides
-
----
-
-class: logo
-
-# Presenters:
-
-| | |
-|---|---|
-| ![ProfilePic](stephen-lowery.png) | Stephen Lowery |
-| ![ProfilePic](brian-cohan.jpg) | Brian Cohan |
-| ![ProfilePic](mike-alfare.jpg) | Mike Alfare |
 
 ---
 
