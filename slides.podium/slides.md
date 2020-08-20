@@ -78,8 +78,8 @@ NASA, Instagram, Wall Street
 
 --
 
-```shell script
-> pip install requests
+```
+$ pip install requests
 ```
 
 ???
@@ -575,6 +575,12 @@ echo "[general]\nemail = author@example.com" > ~/.streamlit/credentials.toml
 echo "[server]\nheadless = true\nenableCORS=false\nport = $PORT\n" > ~/.streamlit/config.toml
 ```
 ]
+
+---
+
+class: title
+
+# DEMO
 
 ---
 
