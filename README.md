@@ -1,5 +1,8 @@
-# RVATech Webinar - 7/21/2020
+# Python 201: Taking It to the Next Level
 
-We will demonstrate how to collect data from a Twitter feed on a regular basis and display the results in a publicly available chart
+PyRVA will present at RVATECH's #TechItYourself series on Thursday, August 20th, 2020.
 
-View app: https://pyrva-rvatech.herokuapp.com/
+We will demonstrate how to collect data from a Twitter feed on a regular basis and display the results in a
+publicly available Streamlit app.
+
+View the app: https://pyrva-rvatech.herokuapp.com/
