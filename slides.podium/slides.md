@@ -1,7 +1,7 @@
 class: title
 
 # Python 201:
-# Taking it to the next level
+## Taking It to the Next Level
 
 ![PyRVA](pyrva-logo.png)
 
@@ -122,6 +122,17 @@ class: title
 ### A markup-based slide presentation tool
 ### part of the BeeWare project
 
+???
+
+Before we get to all the fun data processing and visualizations, I'd like to take a moment
+to look at this slide deck itself.
+ 
+It was actually produced using python, with a tool called Podium.
+ 
+Podium is a markup-based slide presentation tool that is part of the BeeWare project.
+
+For those of you who are not familiar with the BeeWare project...
+
 ---
 class: title
 .left-column[
@@ -135,6 +146,20 @@ class: title
 * Access the native widgets and capabilities of devices
 * Help develop, debug, analyze, and deploy these projects
 ]
+
+???
+
+The BeeWare project has a mission to support python development in all environments.
+They want python to run on multiple devices, not only on various operating systems, but
+also on phones and tablets.
+
+This means packaging python so that it can run on all of these devices, creating tools to
+access native capabilities on these devices, and helping developers debug, analyze, and deploy
+on these devices.
+
+So what does it take to produce a slide using Podium? Let's take a look behind the scenes at
+this slide right here...
+
 ---
 
 ## Create a Slide Using Augmented Markdown
@@ -156,6 +181,18 @@ class: title
 ---
 ```
 
+???
+
+This is the markdown behind the slide we were just on.
+ 
+You'll see some more familiar markdown where images are linked to, links are embedded,
+and bullet points are used.
+
+But you'll also see tags that Podium picks up on, such as the .left-column, class: title,
+and the --- slide separator.
+
+So how do I use Podium?...
+
 ---
 
 ## Install Podium
@@ -172,6 +209,12 @@ class: title
     ```
 1. Execute Podium and select the .podium directory created above
 
+???
+
+Just read the slide, indicate that we're on a Linux machine.
+
+Now let's take a quick look at the UI... 
+
 ---
 
 ## Explore the UI
@@ -181,6 +224,10 @@ You get a few options in the menu bar, all with hotkeys
 * Open a new deck
 * Reload the current deck
 * Present the current deck in fullscreen 
+
+???
+
+Walk through the UI with the bullets
 
 ---
 
@@ -192,9 +239,17 @@ You also get additional functions on a second screen for the presenter
 * Presenter notes
 * Timer
 
+???
+
+Just read the slide
+
 ---
 
 ## What made this possible?
+
+???
+
+Let's look at the main controller class behind the Podium app.
 
 --
 ```python
@@ -212,6 +267,14 @@ class Podium (toga.DocumentApp):
             )
         )
 ```
+
+???
+
+You can see how those menu items were easily added to the Podium toolbar. 
+
+Loosely walk through the arguments.
+
+And let's take a look at the main method inside the UI class...
 
 ---
 
@@ -233,6 +296,20 @@ class PrimarySlideWindow (toga.MainWindow):
     ...
 ```
 
+???
+
+Loosely walk through the arguments.
+
+You can see how it doesn't take a lot to build Podium. It almost blurs the line
+between writing code and writing configuration.
+
+You may be surprised that Podium is less than 500 lines of python code. Obviously
+there is some css and html in the codebase to handle some of the formatting, but
+the orchestration code itself is quite small.
+
+You may have picked up on how BeeWare accomplished this. Podium makes heavy use
+of Toga, which is another BeeWare library.
+
 ---
 
 ## Podium is a Great Example of Modular Python Design
@@ -247,6 +324,23 @@ class PrimarySlideWindow (toga.MainWindow):
 ## [Toga](https://beeware.org/project/projects/libraries/toga/)
 ### A Python native, OS native GUI toolkit
 ]
+
+???
+
+Title
+
+It uses two other BeeWare tools to accomplish its goal.
+
+It uses Briefcase to run as an executable.
+And it uses Toga to create a UI and present the slides.
+
+All of the generic functionality is tucked away in these applications,
+including device specific components.
+
+That makes Podium very straight-forward application.
+
+Now that we've covered how you're seeing what you're seeing,
+let's get on with the data processing.
 
 ---
 
@@ -574,7 +668,7 @@ echo "[server]\nheadless = true\nenableCORS=false\nport = $PORT\n" > ~/.streamli
 # Resources:
 
 * PyRVA: https://www.pyrva.org/
-* GitHub: https://www.github.com/pyrva/
+* GitHub: https://www.github.com/pyrva/rvatech-presentation/
 * Streamlit app: https://pyrva-rvatech.herokuapp.com/
 * Noteable python packages:
     * streamlit, altair
