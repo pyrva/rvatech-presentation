@@ -518,4 +518,6 @@ echo "[server]\nheadless = true\nenableCORS=false\nport = $PORT\n" > ~/.streamli
 
 * PyRVA: https://www.pyrva.org/
 * GitHub: https://www.github.com/pyrva/
+* Matplotlib: https://matplotlib.org/
+* Tweepy: https://www.tweepy.org/
 * Streamlit app: https://pyrva-rvatech.herokuapp.com/
