@@ -46,7 +46,7 @@ Several volunteers. Four of us will present today.
 
 class: logo
 
-# Presenters:
+# Presenters
 
 | | |
 |---|---|
@@ -592,3 +592,16 @@ class: title
 * Streamlit app: https://pyrva-rvatech.herokuapp.com/
 * Noteable python packages:
     * altair, matplotlib, pandas, requests, streamlit, tweepy
+
+---
+
+class: screenshot
+
+### ![ProfilePic](pyrva-logo.png) https://www.meetup.com/PyRVAUserGroup
+
+| | | |
+|---|---|---|
+| ![ProfilePic](chris-may.jpg) | Chris May | https://everydaysuperpowers.com |
+| ![ProfilePic](mike-alfare.jpg) | Mike Alfare | https://www.linkedin.com/in/mikealfare |
+| ![ProfilePic](stephen-lowery.png) | Stephen Lowery | [slowery@ippon.fr](mailto:slowery@ippon.fr) |
+| ![ProfilePic](brian-cohan.jpg) | Brian Cohan | https://briancohan.com |
