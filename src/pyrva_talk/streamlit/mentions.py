@@ -64,13 +64,13 @@ def display(handles: List[str], since: datetime.date) -> None:
         x=alt.X('count():Q', title='Tweets'),
         y=alt.Y('user:N', title=''),
         color='language:N'
-    ).properties(title='Tweet Sources')
+    ).properties(title='Tweet Language')
 
     retweets = base.mark_area(
         opacity=0.3,
         interpolate='step',
     ).encode(
-        x=alt.X('retweets:Q', bin=alt.Bin()),
+        x=alt.X('hashtags:Q', bin=alt.Bin(maxbins=data.hashtags.max())),
         y=alt.Y('count()', stack=None),
         color=alt.Color('user:N'),
     )
