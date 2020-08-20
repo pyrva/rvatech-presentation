@@ -1,18 +1,46 @@
 class: title
 
-# Python the Swiss Army Knife:
-## Sourcing, Analyzing, and Reporting Twitter Data Using Python
+# Python 201:
+# Taking it to the next level
 
 ![PyRVA](pyrva-logo.png)
 
+???
+
+Who am I? 
+
+The ads say I'm speaking, because it's easier than saying PyRVA is speaking.
+
 ---
 
-class: title
 
-# Who is PyRVA?
+# What is PyRVA?
 
-Some things about PyRVA
-And others
+* Richmond's largest Python user group
+
+--
+
+* Nearly 1,500 members
+
+--
+
+* Almost 5 years old
+
+--
+
+* Lecture meetings the 2nd Wednesday each month
+
+--
+
+* Coding nights the 4th Thursday each month
+
+--
+
+* Beginner friendly
+
+???
+
+Several volunteers. Four of us will present today.
 
 ---
 
@@ -30,26 +58,33 @@ class: logo
 ---
 
 # Python is a unique language
+--
 
-* Python is a powerful language
 * Python has simple syntax
+???
+
+write more than read
+
+elementary school 
+--
+
+* Python has a powerful ecosystem
+???
+
+NASA, Instagram, Wall Street
+--
+
 * This combination contributes to python's popularity
 
 ???
 
-Python is a unique language. It is powerful enough to used in places like NASA, Wall Street, and the Large Hadron Collider to do things like render the first image of a black hole and discover new particles.
+Python is not as fast as C. Yet beat out C developers in creating an online platform (YouTube).
 
-Yet it's syntax is simple enough that it is used in elementary schools to teach students to program.
+Not same environments JS. 
+People are bringing it to the browser 
 
-This imbalance of readability and power is one aspect that is contributing to python's rise in popularity. But how can that be, after all, Python is not as fast as C. It is not in all the same environments that JavaScript is in. It's too big to fit on board most embedded chips.
-
-And yet it beat out C developers in creating an online platform (YouTube). People are bringing it to the browser it's getting put on development boards (Circuit Playground Express).
-
----
-
-class: title
-
-# Why is this?
+Too big to fit embedded chips.
+it's getting put on development boards (Circuit Playground Express).
 
 ---
 
@@ -60,14 +95,6 @@ class: title
 
 <cite>~ Glyph Lefkowitz</cite>
 
----
-
-class: title
-
-The python ecosystem is large, and it gives anyone the ability to download software that can empower your project
-to capture data, analyze and graph it, and deploy it to a web server, without having to change languages.
-
-It is this attribute of python that we'd like to show you today.
 
 ---
 
