@@ -5,6 +5,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 from pathlib import Path
 
+from pyrva_talk.twitter.api import get_tweets
 
 def main():
     data = get_data()
@@ -23,9 +24,20 @@ def get_data():
     return lines
 
 
+def get_twitter_data():
+    """ Get data from twitter instead """
+    tweets = get_tweets('#PyCon', start_date='2020-07-01')
+    rows = [
+        {'date': tweet.created_at.strftime('%x'), 'tweet':tweet.full_text} 
+        for tweet in tweets
+    ]
+    return rows
+
+
 def process_data(data):
     """ bin data into day & tweet count """
     labels = list(set(row["date"] for row in data))
+    labels.sort()
     values = []
     for label in labels:
         count = sum(1 for row in data if row["date"] == label)
@@ -38,7 +50,7 @@ def draw_barchart(labels, values):
     plt.bar(labels, values, color="blue")
     plt.xlabel("Date")
     plt.ylabel("Tweets")
-    plt.title("Tweets using #PyRVA")
+    plt.title("Tweets using #PyCon")
     plt.show()
 
 
